@@ -7,6 +7,7 @@ package Vista;
 import Clases.*;
 import Controlador.*;
 import java.util.LinkedList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -139,66 +140,78 @@ public class Vista extends javax.swing.JFrame {
 
     
     public void mostrarPrimerInforme() {
-        LinkedList<Lider> listLd = PrimerInformeCt.info();
-        modelo = new DefaultTableModel();
-        
-        modelo.addColumn("ID Lider");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Primer Apellido");
-        modelo.addColumn("Ciudad de Recidencia");
-        tablaInforme.setModel(modelo);
-        
-        for (Lider ld : listLd) {
-            String[] info = new String[4];
-            
-            info[0] = String.valueOf(ld.getId());
-            info[1] = ld.getNombre();
-            info[2] = ld.getPrimerApellido();
-            info[3] = ld.getCiudadRecidencia();
-            
-            modelo.addRow(info);
+        try {
+            LinkedList<Lider> listLd = PrimerInformeCt.info();
+            modelo = new DefaultTableModel();
+
+            modelo.addColumn("ID Lider");
+            modelo.addColumn("Nombre");
+            modelo.addColumn("Primer Apellido");
+            modelo.addColumn("Ciudad de Recidencia");
+            tablaInforme.setModel(modelo);
+
+            for (Lider ld : listLd) {
+                String[] info = new String[4];
+
+                info[0] = String.valueOf(ld.getId());
+                info[1] = ld.getNombre();
+                info[2] = ld.getPrimerApellido();
+                info[3] = ld.getCiudadRecidencia();
+
+                modelo.addRow(info);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: "+ e);
         }
     }
     
     public void mostrarSegundoInforme() {
-        LinkedList<Proyecto> listP = SegundoInformeCt.info();
-        modelo = new DefaultTableModel();
-        
-        modelo.addColumn("ID_Lider");
-        modelo.addColumn("constructora");
-        modelo.addColumn("numero_habitaciones");
-        modelo.addColumn("ciudad");
-        tablaInforme.setModel(modelo);
-        
-        for (Proyecto p : listP) {
-            String[] info = new String[4];
-            
-            info[0] = String.valueOf(p.getId());
-            info[1] = p.getConstructora();
-            info[2] = String.valueOf(p.getNumHab());
-            info[3] = p.getCiudad();
-            
-            modelo.addRow(info);
+        try {
+            LinkedList<Proyecto> listP = SegundoInformeCt.info();
+            modelo = new DefaultTableModel();
+
+            modelo.addColumn("ID_Lider");
+            modelo.addColumn("constructora");
+            modelo.addColumn("numero_habitaciones");
+            modelo.addColumn("ciudad");
+            tablaInforme.setModel(modelo);
+
+            for (Proyecto p : listP) {
+                String[] info = new String[4];
+
+                info[0] = String.valueOf(p.getId());
+                info[1] = p.getConstructora();
+                info[2] = String.valueOf(p.getNumHab());
+                info[3] = p.getCiudad();
+
+                modelo.addRow(info);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: "+ e);
         }
     }
     
-    public void mostrarTercerInforme() {
-        LinkedList<Compra> listC = TercerInformeCt.info();
-        modelo = new DefaultTableModel();
-        
-        modelo.addColumn("ID_Compra");
-        modelo.addColumn("constructora");
-        modelo.addColumn("banco_vinculado");
-        tablaInforme.setModel(modelo);
-        
-        for (Compra c : listC) {
-            String[] info = new String[3];
-            
-            info[0] = String.valueOf(c.getId());
-            info[1] = c.getConstructora();
-            info[2] = c.getBanco();
-            
-            modelo.addRow(info);
+    public void mostrarTercerInforme() {    
+        try {
+            LinkedList<Compra> listC = TercerInformeCt.info();
+            modelo = new DefaultTableModel();
+
+            modelo.addColumn("ID_Compra");
+            modelo.addColumn("constructora");
+            modelo.addColumn("banco_vinculado");
+            tablaInforme.setModel(modelo);
+
+            for (Compra c : listC) {
+                String[] info = new String[3];
+
+                info[0] = String.valueOf(c.getId());
+                info[1] = c.getConstructora();
+                info[2] = c.getBanco();
+
+                modelo.addRow(info);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: "+ e);
         }
     }
     /**
